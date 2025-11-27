@@ -3,7 +3,7 @@ import format from 'date-fns/format'
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-
+import { IdParam } from '../types/router-params'
 import useAddBreadcrumbs from '../page-header/breadcrumbs/useAddBreadcrumbs'
 import { useUpdateTitle } from '../page-header/title/TitleContext'
 import { SelectOption } from '../shared/components/input/SelectOption'
@@ -20,7 +20,7 @@ const getTitle = (patient: Patient | undefined, medication: Medication | undefin
   patient && medication ? `${medication.medication} for ${patient.fullName}` : ''
 
 const ViewMedication = () => {
-  const { id } = useParams()
+  const { id } = useParams<IdParam>()
   const { t } = useTranslator()
   const history = useHistory()
   const dispatch = useDispatch()

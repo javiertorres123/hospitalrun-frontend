@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
-
+import { IdParam } from '../../types/router-params'
 import Loading from '../../shared/components/Loading'
 import useCareGoal from '../hooks/useCareGoal'
 import CareGoalForm from './CareGoalForm'

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-
+import { IdParam } from '../../types/router-params'
 import useAddBreadcrumbs from '../../page-header/breadcrumbs/useAddBreadcrumbs'
 import { useUpdateTitle } from '../../page-header/title/TitleContext'
 import useTranslator from '../../shared/hooks/useTranslator'
@@ -9,7 +9,7 @@ import { RootState } from '../../shared/store'
 import ViewIncidentDetails from './ViewIncidentDetails'
 
 const ViewIncident = () => {
-  const { id } = useParams()
+  const { id } = useParams<IdParam>()
   const { permissions } = useSelector((root: RootState) => root.user)
   const { t } = useTranslator()
   const updateTitle = useUpdateTitle()

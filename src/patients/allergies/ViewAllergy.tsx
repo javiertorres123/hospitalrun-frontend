@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
+import { IdParam } from '../../types/router-params'
 import TextInputWithLabelFormGroup from '../../shared/components/input/TextInputWithLabelFormGroup'
 import Loading from '../../shared/components/Loading'
 import useTranslator from '../../shared/hooks/useTranslator'

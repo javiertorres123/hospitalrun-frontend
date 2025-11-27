@@ -3,7 +3,7 @@ import format from 'date-fns/format'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-
+import { IdParam } from '../types/router-params'
 import useAddBreadcrumbs from '../page-header/breadcrumbs/useAddBreadcrumbs'
 import { useUpdateTitle } from '../page-header/title/TitleContext'
 import usePatient from '../patients/hooks/usePatient'
@@ -24,7 +24,7 @@ const getTitle = (patient: Patient | undefined, lab: Lab | undefined) =>
   patient && lab ? `${lab.type} for ${patient.fullName}(${lab.code})` : ''
 
 const ViewLab = () => {
-  const { id } = useParams()
+  const { id } = useParams<IdParam>()
   const { t } = useTranslator()
   const history = useHistory()
   const { permissions } = useSelector((state: RootState) => state.user)

@@ -2,7 +2,7 @@ import { Button } from '@hospitalrun/components'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, Route, Switch } from 'react-router-dom'
-
+import { IdParam } from '../../types/router-params'
 import Loading from '../../shared/components/Loading'
 import useTranslator from '../../shared/hooks/useTranslator'
 import Permissions from '../../shared/model/Permissions'
@@ -13,10 +13,10 @@ import ViewCareGoal from './ViewCareGoal'
 import ViewCareGoals from './ViewCareGoals'
 
 const CareGoalTab = () => {
-  const { id: patientId } = useParams()
+  const { id } = useParams<IdParam>()
   const { t } = useTranslator()
   const { permissions } = useSelector((state: RootState) => state.user)
-  const { data, status } = usePatient(patientId)
+  const { data, status } = usePatient(id)
   const [showAddCareGoalModal, setShowAddCareGoalModal] = useState(false)
 
   if (data === undefined || status === 'loading') {

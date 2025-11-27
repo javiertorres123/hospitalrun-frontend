@@ -1,13 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
+import { IdParam } from '../../types/router-params'
 import Loading from '../../shared/components/Loading'
 import useCarePlan from '../hooks/useCarePlan'
 import usePatient from '../hooks/usePatient'
 import CarePlanForm from './CarePlanForm'
 
 const ViewCarePlan = () => {
-  const { carePlanId, id: patientId } = useParams()
+  const { id } = useParams<IdParam>()
   const { data: patient, status: patientStatus } = usePatient(patientId)
   const { data: carePlan, status: carePlanStatus } = useCarePlan(patientId, carePlanId)
 
