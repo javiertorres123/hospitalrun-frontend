@@ -2,7 +2,7 @@ import { Button } from '@hospitalrun/components'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Switch, useParams } from 'react-router-dom'
-
+import { IdParam } from '../../types/router-params'
 import useAddBreadcrumbs from '../../page-header/breadcrumbs/useAddBreadcrumbs'
 import Loading from '../../shared/components/Loading'
 import useTranslator from '../../shared/hooks/useTranslator'
@@ -14,16 +14,16 @@ import ViewDiagnoses from './ViewDiagnoses'
 import ViewDiagnosis from './ViewDiagnosis'
 
 const Diagnoses = () => {
-  const { id: patientId } = useParams()
+    const { id } = useParams<IdParam>()
   const { t } = useTranslator()
   const { permissions } = useSelector((state: RootState) => state.user)
-  const { data, status } = usePatient(patientId)
+  const { data, status } = usePatient(id)
   const [showDiagnosisModal, setShowDiagnosisModal] = useState(false)
 
   const breadcrumbs = [
     {
       i18nKey: 'patient.diagnoses.label',
-      location: `/patients/${patientId}/diagnoses`,
+      location: `/patients/${id}/diagnoses`,
     },
   ]
   useAddBreadcrumbs(breadcrumbs)

@@ -2,7 +2,7 @@ import { Spinner, Button, Modal, Toast } from '@hospitalrun/components'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-
+import { IdParam } from '../../../types/router-params'
 import useAddBreadcrumbs from '../../../page-header/breadcrumbs/useAddBreadcrumbs'
 import { useButtonToolbarSetter } from '../../../page-header/button-toolbar/ButtonBarProvider'
 import { useUpdateTitle } from '../../../page-header/title/TitleContext'
@@ -25,7 +25,7 @@ const ViewAppointment = () => {
     }
   }, [updateTitle, t])
 
-  const { id } = useParams()
+  const { id } = useParams<IdParam>()
   const history = useHistory()
   const [deleteMutate] = useDeleteAppointment()
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState<boolean>(false)

@@ -2,6 +2,7 @@ import { Spinner, Button, Toast } from '@hospitalrun/components'
 import isEmpty from 'lodash/isEmpty'
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import { IdParam } from '../../../types/router-params'
 
 import useAddBreadcrumbs from '../../../page-header/breadcrumbs/useAddBreadcrumbs'
 import { useUpdateTitle } from '../../../page-header/title/TitleContext'
@@ -15,8 +16,7 @@ import { getAppointmentLabel } from '../util/scheduling-appointment.util'
 
 const EditAppointment = () => {
   const { t } = useTranslator()
-  const { id } = useParams()
-
+  const { id } = useParams<IdParam>()
   const updateTitle = useUpdateTitle()
   useEffect(() => {
     updateTitle(t('scheduling.appointments.editAppointment'))

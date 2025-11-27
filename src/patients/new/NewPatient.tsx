@@ -65,7 +65,7 @@ const NewPatient = () => {
 
     if (duplicatePatients.length > 0) {
       setShowDuplicateNewPatientModal(true)
-      setDuplicatePatient(duplicatePatients as Patient)
+      setDuplicatePatient(duplicatePatients[0] as Patient)
     } else {
       dispatch(createPatient(patient, onSuccessfulSave))
     }

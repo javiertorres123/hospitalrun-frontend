@@ -1,13 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
+import { IdParam } from '../../types/router-params'
 import Loading from '../../shared/components/Loading'
 import useDiagnosis from '../hooks/useDiagnosis'
 import usePatient from '../hooks/usePatient'
 import DiagnosisForm from './DiagnosisForm'
 
 const ViewDiagnosis = () => {
-  const { diagnosisId, id: patientId } = useParams()
+  const { id } = useParams<IdParam>()
   const { data: patient, status: patientStatus } = usePatient(patientId)
   const { data: diagnosis, status: diagnosisStatus } = useDiagnosis(patientId, diagnosisId)
 
